@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 5</title>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+
+</head>
+<body>
+    <div id="title"></div>
+</body>
+</html>
+
+<script type='text/babel'>
+
+    // const Composant = () => (
+    //   <h1>Composant</h1>
+    //)
+    
+    //const name = ""
+
+    function WelcomeMessage(props){
+        return <h1>Hello, {props.name}</h1>
+    }
+
+    const element = (
+        <>
+            <WelcomeMessage name="Pierre"/>
+            <WelcomeMessage name="Jean"/>
+        </>
+    );
+
+    const rootElement = document.getElementById('title');
+    ReactDOM.render(element, rootElement);
+
+</script>

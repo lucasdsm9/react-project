@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 6</title>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="title"></div>
+</body>
+</html>
+
+<script type='text/babel'>
+
+    function App(){   
+        const [games, setGames] = React.useState([
+            {id: '1', name : 'GTA V', etat: true},
+            {id: '2', name : 'Valorant', etat: false},
+            {id: '3', name : 'Mario Kart', etat: false},
+            {id: '4', name : 'Mario Bros', etat: false}
+        ]); 
+
+        return (
+            <GroupButton jeux={games}/>
+        )
+    }
+
+    function GroupButton(props){
+       console.log(props)
+        return props.jeux.map(jeu => <Button jeu={jeu}/>)
+    }
+
+    function Button(props){
+        return <button onClick={ () => { }}>{props.jeux}</button>
+    }
+
+    const rootElement = document.getElementById('title');
+    ReactDOM.render(<App/>, rootElement);
+
+
+
+
+</script>

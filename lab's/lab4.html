@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 4</title>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="title"></div>
+</body>
+</html>
+
+
+<script type='text/babel'>
+const name = "test";
+
+const element = (
+    <>
+        <div className="container" style={{color: 'blue'}}>
+            <h1>{`Bienvenue à ${name}`}</h1>
+        </div>
+    </> 
+);
+  
+    const rootElement = document.getElementById('title');
+    ReactDOM.render(element, rootElement);
+
+</script>
+
+<style>
+    .container{
+      background-color: red;  
+    } 
+</style>
