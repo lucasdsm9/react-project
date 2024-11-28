@@ -24,19 +24,37 @@
             {id: '4', name : 'Mario Bros', etat: false}
         ]); 
 
+        function handler(jeuId){
+            const newGames = games.map(game => {
+                if(game.id == jeuId){
+                    const newGameState = game
+                    newGameState.etat = !game.etat
+                    return newGameState;
+                }
+            return game
+            })
+            setGames(newGames)
+        }
+
+
         return (
-            <GroupButton jeux={games}/>
+            <GroupButton jeux={games} handler={handler}/>
         )
     }
 
     function GroupButton(props){
        console.log(props)
-        return props.jeux.map(jeu => <Button jeu={jeu}/>)
+        return props.jeux.map(jeu => <Button handler={props.handler} key={jeu.id} jeu={jeu}/>)
     }
 
-    function Button(props){
-        return <button onClick={ () => { }}>{props.jeux}</button>
+    function Button({jeu, handler}){
+        return ( 
+            <button onClick={ () => handler(jeu.id)} style={{ backgroundColor: jeu.etat ? 'blue' : 'gray' }}>
+                {jeu.name}
+            </button> 
+        )
     }
+
 
     const rootElement = document.getElementById('title');
     ReactDOM.render(<App/>, rootElement);

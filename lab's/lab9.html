@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 9</title>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+</head>
+<body>
+
+<div id="langue"></div>
+
+<script type='text/babel'>
+
+    const LanguageContext = React.createContext();
+
+    function LanguageProvider({ children }) {
+        const [language, setLanguage] = React.useState('fr');
+        function switchLanguage() {
+            setLanguage((prevLanguage) => (prevLanguage === 'fr' ? 'en' : 'fr'));
+        }
+        return (
+            <LanguageContext.Provider value={{ language, switchLanguage }}>
+                {children}
+            </LanguageContext.Provider>
+        );
+    }
+
+    function LanguageBtn() {
+        const { switchLanguage } = React.useContext(LanguageContext);
+        return <button onClick={switchLanguage}>Change de langue</button>;
+    }
+
+    function Content() {
+        const { language } = React.useContext(LanguageContext);
+        const messages = {
+            fr: "Bonjour",
+            en: "Hello",
+        };
+        return <h1>{messages[language]}</h1>;
+    }
+
+    function App() {
+        return (
+            <LanguageProvider>
+                <div>
+                    <h2>Langue</h2>
+                    <LanguageBtn />
+                    <Content />
+                </div>
+            </LanguageProvider>
+        );
+    }
+
+    const rootElement = document.getElementById('langue');
+    ReactDOM.render(<App />, rootElement);
+
+</script>
+
+</body>
+</html>
